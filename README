@@ -1,0 +1,6 @@
+PRU Debugger - an ncurses-based debugger for the Programmable Realtime Unit.
+Will allow you to control and monitor the PRU, including setting breakpoints
+and single-stepping.
+
+Not finished yet!!
+
