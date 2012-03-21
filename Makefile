@@ -17,10 +17,10 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 
-#CC=/usr/local/angstrom/arm/bin/arm-angstrom-linux-gnueabi-g++ 
-CC=g++
+#CXX=/usr/local/angstrom/arm/bin/arm-angstrom-linux-gnueabi-g++ 
+CXX=g++
 
-LDFLAGS+=-lncurses
+LIBS=-lncurses
 
 TARGET=prude
 
@@ -36,7 +36,7 @@ all: init $(TARGET)
 	
 
 $(TARGET): $(OBJS)
-	$(CC) -o $(TARGET) $(OBJS) $(LDFLAGS)
+	$(CXX) -o $(TARGET) $(OBJS) ${LIBS} $(LDFLAGS)
 
 
 init:
@@ -50,7 +50,7 @@ clean:
 -include $(DEPS)
 
 $(OBJDIR)/%.o : %.cc
-	$(CC) $(DEFINES) $(CFLAGS) $(INCPATH) -o $@ -c $<
-	$(CC) -MM -MT $(OBJDIR)/$*.o $(DEFINES) $(CFLAGS) $(INCPATH) $*.cc > $(DEPDIR)/$*.d
+	$(CXX) $(DEFINES) $(CFLAGS) $(INCPATH) -o $@ -c $<
+	$(CXX) -MM -MT $(OBJDIR)/$*.o $(DEFINES) $(CFLAGS) $(INCPATH) $*.cc > $(DEPDIR)/$*.d
 
 
